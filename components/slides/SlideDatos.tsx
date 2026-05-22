@@ -54,7 +54,7 @@ export function SlideDatos() {
 
       <Item>
         <Heading>
-          15 variables, una variable objetivo y{" "}
+          16 variables, una variable objetivo y{" "}
           <span className="gradient-text-cyan">datos ocultos</span>
         </Heading>
       </Item>
