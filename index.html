@@ -234,49 +234,75 @@ pre.code .t{color:#2dd4bf;}pre.code .a{color:#fbbf24;}pre.code .gy{color:#64748b
 <div class="slide" id="s3">
   <div class="sh2">
     <div class="slbl">02 / Los Datos</div>
-    <h2 class="htitle">16 variables predictoras y <span class="hl">faltantes</span> que informan</h2>
+    <h2 class="htitle">16 variables, una variable objetivo y <span class="hl">datos ocultos</span></h2>
   </div>
   <div class="sp">
     <div class="row">
       <div class="dc f1" style="display:flex;flex-direction:column;overflow:hidden;">
-        <div style="font-size:11px;font-weight:700;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;">Variables del dataset</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:13px;">🗄️</span>
+          <span style="font-size:13px;font-weight:700;color:var(--w);">Variables del dataset</span>
+          <span style="font-size:11px;color:var(--g);">· 16 predictoras + 1 objetivo (y) — duration eliminada por data leakage</span>
+        </div>
         <table class="dt" style="flex:1;">
           <thead><tr><th>Variable</th><th>Tipo</th><th>Descripción</th></tr></thead>
           <tbody>
-            <tr><td><strong>age / balance</strong></td><td><span class="b bt">num</span></td><td>Edad y saldo promedio anual del cliente</td></tr>
-            <tr><td><strong>job</strong></td><td><span class="b ba-b">cat</span></td><td>Ocupación (12 categorías: admin, blue-collar...)</td></tr>
-            <tr><td><strong>marital / education</strong></td><td><span class="b ba-b">cat</span></td><td>Estado civil y nivel educativo</td></tr>
-            <tr><td><strong>default / housing / loan</strong></td><td><span class="b bp">bin</span></td><td>Historial crediticio: mora, hipoteca, préstamo</td></tr>
-            <tr><td><strong>contact / day / month</strong></td><td><span class="b ba-b">cat</span></td><td>Medio y momento de contacto</td></tr>
-            <tr><td><strong>campaign / pdays / previous</strong></td><td><span class="b bt">num</span></td><td>Intensidad de campañas anteriores</td></tr>
-            <tr><td><strong>poutcome</strong></td><td><span class="b ba-b">cat</span></td><td>Resultado de campaña anterior</td></tr>
-            <tr><td><strong style="color:var(--red);">duration ❌</strong></td><td><span class="b br-b">leak</span></td><td>Duración de llamada — eliminada por data leakage</td></tr>
-            <tr><td><strong style="color:var(--teal);">y (objetivo)</strong></td><td><span class="b bg-b">target</span></td><td>¿Suscribió el producto? yes / no</td></tr>
+            <tr><td><code style="font-size:11px;">age</code></td><td><span class="b bt">num</span></td><td>Edad del cliente</td></tr>
+            <tr><td><code style="font-size:11px;">job</code></td><td><span class="b ba-b">cat</span></td><td>Ocupación (12 categorías)</td></tr>
+            <tr><td><code style="font-size:11px;">marital</code></td><td><span class="b ba-b">cat</span></td><td>Estado civil</td></tr>
+            <tr><td><code style="font-size:11px;">education</code></td><td><span class="b ba-b">cat</span></td><td>Nivel educativo</td></tr>
+            <tr><td><code style="font-size:11px;">default / housing / loan</code></td><td><span class="b bp">bin</span></td><td>Historial crediticio</td></tr>
+            <tr><td><code style="font-size:11px;">balance</code></td><td><span class="b bt">num</span></td><td>Saldo promedio anual (puede ser negativo)</td></tr>
+            <tr><td><code style="font-size:11px;">contact / day / month</code></td><td><span class="b ba-b">cat</span></td><td>Medio y momento de contacto</td></tr>
+            <tr><td><code style="font-size:11px;">campaign / pdays / previous</code></td><td><span class="b bt">num</span></td><td>Intensidad de campañas anteriores</td></tr>
+            <tr><td><code style="font-size:11px;">poutcome</code></td><td><span class="b ba-b">cat</span></td><td>Resultado de campaña anterior</td></tr>
+            <tr><td><code style="font-size:11px;color:var(--red);text-decoration:line-through;">duration</code></td><td><span class="b br-b">leak</span></td><td>Duración llamada — eliminada (data leakage)</td></tr>
           </tbody>
         </table>
       </div>
       <div class="col f08">
         <div class="dc" style="flex:none;">
-          <div style="font-size:11px;font-weight:700;color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;">❓ Faltantes como "unknown"</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <span style="font-size:13px;">❓</span>
+            <span style="font-size:13px;font-weight:700;color:var(--w);">Faltantes codificados como "unknown"</span>
+          </div>
           <table class="dt">
-            <thead><tr><th>Variable</th><th>Cantidad</th><th>%</th><th>Tratamiento</th></tr></thead>
+            <thead><tr><th>Variable</th><th style="text-align:right;">Cant.</th><th style="text-align:center;">%</th><th>Tratamiento</th></tr></thead>
             <tbody>
-              <tr><td>poutcome</td><td>3.705</td><td><span class="b br-b">82%</span></td><td>Mantener — informa "cliente nuevo"</td></tr>
-              <tr><td>contact</td><td>1.324</td><td><span class="b ba-b">29%</span></td><td>Mantener — patrón informativo</td></tr>
-              <tr><td>education</td><td>187</td><td><span class="b bt">4%</span></td><td>Imputar con la moda</td></tr>
-              <tr><td>job</td><td>38</td><td><span class="b bg-b">0.8%</span></td><td>Imputar con la moda</td></tr>
+              <tr><td>poutcome</td><td style="text-align:right;">3.705</td><td style="text-align:center;"><span class="b br-b">82.0%</span></td><td>Mantener (informa: cliente nuevo)</td></tr>
+              <tr><td>contact</td><td style="text-align:right;">1.324</td><td style="text-align:center;"><span class="b ba-b">29.3%</span></td><td>Mantener + analizar patrón</td></tr>
+              <tr><td>education</td><td style="text-align:right;">187</td><td style="text-align:center;"><span class="b bt">4.1%</span></td><td>Imputación condicionada por job (moda educativa por ocupación)</td></tr>
+              <tr><td>job</td><td style="text-align:right;">38</td><td style="text-align:center;"><span class="b bg-b">0.8%</span></td><td>Imputación condicionada por edad (retired/student/moda etaria)</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="dc" style="flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:11px;font-weight:700;color:var(--gl);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;">Desbalance de clases</div>
-          <div class="cw" style="height:120px;">
-            <canvas id="c-clases"></canvas>
+        <div class="dc" style="flex:none;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <span style="font-size:13px;">⚖️</span>
+            <span style="font-size:13px;font-weight:700;color:var(--w);">Desbalance de clases — el gran desafío</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                <span style="color:var(--gl);">No convierte</span><span style="font-weight:700;color:var(--w);">88%</span>
+              </div>
+              <div style="height:12px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden;">
+                <div style="width:88%;height:100%;border-radius:6px;background:rgba(255,255,255,.2);"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+                <span style="color:var(--gl);">Sí convierte</span><span style="font-weight:700;color:var(--w);">12%</span>
+              </div>
+              <div style="height:12px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden;">
+                <div style="width:12%;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--purple),var(--teal));"></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="note" style="flex:none;">
           <div class="note-ic">💡</div>
-          <p>Con <strong>88/12 de desbalance</strong>, un modelo que diga "nadie convierte" tendría 88% accuracy pero es completamente inútil. La métrica correcta es el <strong>AUC-ROC</strong>.</p>
+          <p><strong>Conclusión clave</strong><br>Con 88/12 de desbalance, un modelo que diga "nadie convierte" tiene 88% de accuracy… pero es completamente inútil. La métrica correcta es el <strong style="color:var(--teal);">AUC-ROC</strong>.</p>
         </div>
       </div>
     </div>
