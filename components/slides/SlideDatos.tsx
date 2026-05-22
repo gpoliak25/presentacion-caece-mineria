@@ -29,8 +29,8 @@ const variables: { name: string; type: VarType; desc: string }[] = [
 const missing: { v: string; n: string; pct: string; care: string; color: string }[] = [
   { v: "poutcome", n: "3.705", pct: "82.0%", care: "Mantener (informa: cliente nuevo)", color: "#ef4444" },
   { v: "contact", n: "1.324", pct: "29.3%", care: "Mantener + analizar patrón", color: "#fbbf24" },
-  { v: "education", n: "187", pct: "4.1%", care: "Imputar con la moda", color: "#22d3ee" },
-  { v: "job", n: "38", pct: "0.8%", care: "Imputar con la moda", color: "#34d399" },
+  { v: "education", n: "187", pct: "4.1%", care: "Imputación condicionada por job (moda educativa por ocupación)", color: "#22d3ee" },
+  { v: "job", n: "38", pct: "0.8%", care: "Imputación condicionada por edad (retired/student/moda etaria)", color: "#34d399" },
 ];
 
 function TypeBadge({ type }: { type: VarType }) {
@@ -69,7 +69,7 @@ export function SlideDatos() {
                 Variables del dataset
               </span>
               <span className="text-xs text-faint">
-                · 15 predictoras + 1 objetivo (y)
+                · 16 predictoras + 1 objetivo (y) — duration eliminada por data leakage
               </span>
             </div>
             <div className="overflow-hidden rounded-xl border border-line">

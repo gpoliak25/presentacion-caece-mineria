@@ -44,7 +44,7 @@ export function SlideAplicacion() {
   return (
     <SlideShell>
       <Item>
-        <SectionTag index="06" label="Aplicación al Negocio" accent="amber" />
+        <SectionTag index="07" label="Aplicación al Negocio" accent="amber" />
       </Item>
 
       <Item>

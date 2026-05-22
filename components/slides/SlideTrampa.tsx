@@ -172,13 +172,13 @@ export function SlideTrampa() {
                 <p className="text-[0.7rem] text-faint">AUC con duration</p>
               </div>
               <div className="flex-1 rounded-lg border border-cyan/25 bg-cyan/[0.07] px-3 py-2">
-                <p className="gradient-text-cyan text-2xl font-bold">0.79</p>
-                <p className="text-[0.7rem] text-faint">AUC sin duration</p>
+                <p className="gradient-text-cyan text-2xl font-bold">0.76</p>
+                <p className="text-[0.7rem] text-faint">AUC sin duration (RF)</p>
               </div>
             </div>
             <p className="text-xs leading-relaxed text-muted">
               Con <span className="font-mono text-cyan">duration</span> el AUC ≈
-              0.93 en papel es espectacular; sin ella ≈ 0.79 es honesto y{" "}
+              0.93 en papel es espectacular; sin ella ≈ 0.76 es honesto y{" "}
               <span className="font-semibold text-fg">
                 desplegable en producción
               </span>

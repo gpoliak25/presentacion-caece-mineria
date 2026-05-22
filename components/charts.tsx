@@ -70,10 +70,10 @@ export function ConversionDonut() {
 /* ---- Grouped bars: CART vs Random Forest across metrics ---- */
 export function MetricsBarChart() {
   const data = [
-    { metric: "Accuracy", CART: 0.73, RF: 0.73 },
-    { metric: "AUC-ROC", CART: 0.76, RF: 0.79 },
-    { metric: "Recall (sí)", CART: 0.6, RF: 0.62 },
-    { metric: "F1 (sí)", CART: 0.43, RF: 0.46 },
+    { metric: "Accuracy", CART: 0.79, RF: 0.78 },
+    { metric: "AUC-ROC", CART: 0.72, RF: 0.76 },
+    { metric: "Recall (sí)", CART: 0.52, RF: 0.62 },
+    { metric: "F1 (sí)", CART: 0.36, RF: 0.46 },
   ];
   return (
     <ResponsiveContainer width="100%" height={208}>

@@ -6,7 +6,7 @@ import { SlideShell, Item } from "../slide-shell";
 const columns = [
   {
     label: "Integrantes",
-    lines: ["Lic. Lorena Lopez", "Lic. Gisela Poliak"],
+    lines: ["Lic. Lorena López", "Lic. Gisela Poliak"],
   },
   {
     label: "Técnicas",
@@ -14,7 +14,7 @@ const columns = [
   },
   {
     label: "Dataset",
-    lines: ["49.732 registros bancarios", "15 variables predictoras"],
+    lines: ["49.732 registros bancarios", "16 variables predictoras (15 tras eliminar duration)"],
   },
 ];
 

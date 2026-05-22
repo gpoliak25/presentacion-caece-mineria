@@ -56,11 +56,12 @@ const panels: {
   {
     icon: AlertTriangle,
     accent: "amber",
-    title: "Limitaciones",
+    title: "Limitaciones metodológicas",
     points: [
-      "El modelo se entrenó con datos históricos — el comportamiento futuro puede variar",
-      "La mejora del RF sobre CART fue moderada (3pp AUC) pero consistente y generalizable",
-      "El análisis es predictivo: la decisión final combina predicción con criterios de negocio",
+      "Se usó una única partición train/test sin validación cruzada estratificada (Stratified K-Fold) — con desbalance 88/12 puede generar estimaciones inestables.",
+      "No se reportó la curva Precision-Recall, más informativa que ROC ante desbalance severo.",
+      "No se exploraron técnicas de rebalanceo (SMOTE, undersampling, ajuste de umbral) que podrían mejorar la captura de la clase minoritaria.",
+      "El modelo se entrenó con datos históricos — el comportamiento futuro puede variar (data drift).",
     ],
   },
   {
@@ -81,7 +82,7 @@ export function SlideConclusiones() {
     <SlideShell>
       <Item>
         <div className="section-label mb-3 flex items-center justify-center gap-2 text-violet">
-          <span>06</span>
+          <span>09</span>
           <span className="opacity-40">/</span>
           <span>Impacto y Conclusiones</span>
         </div>
@@ -92,6 +93,11 @@ export function SlideConclusiones() {
           <span className="gradient-text">+244%</span>{" "}
           <span className="text-fg">de conversiones con el mismo presupuesto</span>
         </h2>
+        <p className="mt-2 text-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber/30 bg-amber/10 px-3 py-1 text-xs font-semibold text-amber">
+            Escenario hipotético ilustrativo
+          </span>
+        </p>
       </Item>
 
       <div className="mt-5 grid gap-3 lg:grid-cols-2">
@@ -171,7 +177,7 @@ export function SlideConclusiones() {
                 ))}
               </div>
               <p className="mt-2 text-[0.7rem] text-faint">
-                Ingreso estimado a $2.000 por conversión · costo a $50 por llamada.
+                Valores ilustrativos para demostrar el potencial del modelo. Los supuestos económicos ($2.000/conversión y $50/llamada) deben validarse con el área comercial del banco.
               </p>
             </Card>
           </Item>

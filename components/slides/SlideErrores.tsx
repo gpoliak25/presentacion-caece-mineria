@@ -44,7 +44,7 @@ export function SlideErrores() {
   return (
     <SlideShell>
       <Item>
-        <SectionTag index="07" label="Errores y Umbral" accent="red" />
+        <SectionTag index="08" label="Errores y Umbral" accent="red" />
       </Item>
 
       <Item>

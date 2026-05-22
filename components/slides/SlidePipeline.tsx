@@ -111,7 +111,7 @@ export function SlidePipeline() {
   return (
     <SlideShell>
       <Item>
-        <SectionTag index="03" label="Pipeline" accent="emerald" />
+        <SectionTag index="04" label="Pipeline" accent="emerald" />
       </Item>
 
       <Item>

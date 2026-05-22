@@ -12,53 +12,53 @@ import { SlideShell, Item } from "../slide-shell";
 import { SectionTag, Heading, Card } from "../ui";
 import { MetricsBarChart } from "../charts";
 
-type Win = "empate" | "rf" | "rfpp";
+type Win = "empate" | "rf" | "rfpp" | "cart";
 
 const rows: { metric: string; cart: string; rf: string; win: Win; highlight?: boolean }[] = [
-  { metric: "Accuracy", cart: "0.7300", rf: "0.7300", win: "empate" },
-  { metric: "AUC-ROC", cart: "0.7600", rf: "0.7900", win: "rfpp", highlight: true },
-  { metric: "Precision (sí)", cart: "~34%", rf: "~36%", win: "rf" },
-  { metric: "Recall (sí)", cart: "~60%", rf: "~62%", win: "rf" },
-  { metric: "F1 (sí)", cart: "~43%", rf: "~46%", win: "rf" },
+  { metric: "Accuracy", cart: "0.7868", rf: "0.7820", win: "cart" },
+  { metric: "AUC-ROC", cart: "0.7209", rf: "0.7626", win: "rfpp", highlight: true },
+  { metric: "Precision (sí)", cart: "0.28", rf: "—", win: "rf" },
+  { metric: "Recall (sí)", cart: "0.52", rf: "—", win: "rf" },
+  { metric: "F1 (sí)", cart: "0.36", rf: "ver notebook", win: "rf" },
 ];
 
 const winBadge: Record<Win, { text: string; cls: string }> = {
   empate: { text: "Empate", cls: "border-line bg-white/[0.05] text-muted" },
   rf: { text: "RF", cls: "border-cyan/30 bg-cyan/10 text-cyan" },
-  rfpp: { text: "RF +3pp", cls: "border-cyan/30 bg-cyan/10 text-cyan" },
+  rfpp: { text: "RF +4pp", cls: "border-cyan/30 bg-cyan/10 text-cyan" },
+  cart: { text: "CART +0.5pp", cls: "border-violet/30 bg-violet/10 text-violet" },
 };
 
 const reading: { strong: string; rest: string }[] = [
   {
-    strong: "Accuracy 73%",
-    rest: "— empate, pero ambos superan el baseline (88% diciendo “no” siempre en la clase negativa).",
+    strong: 'Accuracy: CART 79% vs RF 78%',
+    rest: '— CART gana levemente en accuracy, pero esta métrica engaña con clases desbalanceadas.',
   },
   {
-    strong: "AUC 0.79",
-    rest: "— de cada par (sí/no), el RF ordena bien 79 de 100. Suficiente para priorizar campañas.",
+    strong: 'AUC 0.76 (RF)',
+    rest: '— de cada par (sí/no), el RF ordena bien 76 de 100. El AUC es la métrica central del proyecto.',
   },
   {
-    strong: "Recall 62%",
-    rest: "— captura 6 de cada 10 clientes que realmente convertirían.",
+    strong: 'Recall CART 52%',
+    rest: '— captura poco más de 1 de cada 2 clientes que realmente convertirían. RF mejora este número.',
   },
 ];
 
 const topVars = [
   "poutcome_success",
-  "age",
   "balance",
-  "pdays",
-  "previous",
+  "month_mar",
+  "month_oct",
+  "contact_cellular",
+  "age",
   "campaign",
-  "month",
-  "contact",
 ];
 
 export function SlideResultados() {
   return (
     <SlideShell>
       <Item>
-        <SectionTag index="05" label="Resultados" accent="cyan" />
+        <SectionTag index="06" label="Resultados" accent="cyan" />
       </Item>
 
       <Item>

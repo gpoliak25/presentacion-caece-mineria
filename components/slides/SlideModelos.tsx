@@ -38,9 +38,9 @@ const models: Model[] = [
     ],
     resultLabel: "Resultado CART",
     stats: [
-      { label: "Accuracy", value: "0.73" },
-      { label: "AUC", value: "0.76" },
-      { label: 'Recall "sí"', value: "~60%" },
+      { label: "Accuracy", value: "0.79" },
+      { label: "AUC", value: "0.72" },
+      { label: 'Recall "sí"', value: "~52%" },
     ],
   },
   {
@@ -64,8 +64,8 @@ const models: Model[] = [
     ],
     resultLabel: "Resultado Random Forest",
     stats: [
-      { label: "Accuracy", value: "0.73" },
-      { label: "AUC", value: "0.79" },
+      { label: "Accuracy", value: "0.78" },
+      { label: "AUC", value: "0.76" },
       { label: 'Recall "sí"', value: "~62%" },
     ],
   },
@@ -146,7 +146,7 @@ export function SlideModelos() {
   return (
     <SlideShell>
       <Item>
-        <SectionTag index="04" label="Los Modelos" accent="violet" />
+        <SectionTag index="05" label="Los Modelos" accent="violet" />
       </Item>
 
       <Item>

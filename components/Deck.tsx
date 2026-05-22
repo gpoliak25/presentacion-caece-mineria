@@ -13,6 +13,7 @@ import { SlideResultados } from "./slides/SlideResultados";
 import { SlideAplicacion } from "./slides/SlideAplicacion";
 import { SlideErrores } from "./slides/SlideErrores";
 import { SlideConclusiones } from "./slides/SlideConclusiones";
+import { SlideBibliografia } from "./slides/SlideBibliografia";
 
 const slides = [
   { id: "portada", node: <SlideCover /> },
@@ -25,6 +26,7 @@ const slides = [
   { id: "aplicacion", node: <SlideAplicacion /> },
   { id: "errores", node: <SlideErrores /> },
   { id: "conclusiones", node: <SlideConclusiones /> },
+  { id: "bibliografia", node: <SlideBibliografia /> },
 ];
 
 const LAST = slides.length - 1;
