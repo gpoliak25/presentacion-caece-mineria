@@ -112,26 +112,28 @@ export function SlideDatos() {
                 </span>
               </div>
               <div className="overflow-hidden rounded-xl border border-line">
-                <div className="grid grid-cols-[1fr_auto_56px_1.5fr] gap-2 bg-white/[0.03] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wide text-faint">
+                <div className="grid grid-cols-[1fr_64px_56px_1.5fr] bg-white/[0.03] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wide text-faint">
                   <span>Variable</span>
-                  <span>Cant.</span>
-                  <span>%</span>
-                  <span>Tratamiento</span>
+                  <span className="text-right">Cant.</span>
+                  <span className="text-center">%</span>
+                  <span className="pl-2">Tratamiento</span>
                 </div>
                 {missing.map((m) => (
                   <div
                     key={m.v}
-                    className="grid grid-cols-[1fr_auto_56px_1.5fr] items-center gap-2 border-t border-line px-3.5 py-2"
+                    className="grid grid-cols-[1fr_64px_56px_1.5fr] items-center border-t border-line px-3.5 py-2"
                   >
                     <span className="font-mono text-xs text-fg">{m.v}</span>
-                    <span className="font-mono text-xs text-muted">{m.n}</span>
-                    <span
-                      className="rounded-md px-1.5 py-0.5 text-center text-[0.68rem] font-bold"
-                      style={{ color: m.color, background: `${m.color}1f` }}
-                    >
-                      {m.pct}
+                    <span className="font-mono text-xs text-muted text-right">{m.n}</span>
+                    <span className="flex justify-center">
+                      <span
+                        className="rounded-md px-1.5 py-0.5 text-center text-[0.68rem] font-bold"
+                        style={{ color: m.color, background: `${m.color}1f` }}
+                      >
+                        {m.pct}
+                      </span>
                     </span>
-                    <span className="text-xs leading-tight text-muted">
+                    <span className="text-xs leading-tight text-muted pl-2">
                       {m.care}
                     </span>
                   </div>
