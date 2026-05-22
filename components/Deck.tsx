@@ -7,8 +7,11 @@ import { SlideCover } from "./slides/SlideCover";
 import { SlideProblema } from "./slides/SlideProblema";
 import { SlideDatos } from "./slides/SlideDatos";
 import { SlideTrampa } from "./slides/SlideTrampa";
+import { SlidePipeline } from "./slides/SlidePipeline";
 import { SlideModelos } from "./slides/SlideModelos";
 import { SlideResultados } from "./slides/SlideResultados";
+import { SlideAplicacion } from "./slides/SlideAplicacion";
+import { SlideErrores } from "./slides/SlideErrores";
 import { SlideConclusiones } from "./slides/SlideConclusiones";
 
 const slides = [
@@ -16,8 +19,11 @@ const slides = [
   { id: "problema", node: <SlideProblema /> },
   { id: "datos", node: <SlideDatos /> },
   { id: "trampa", node: <SlideTrampa /> },
+  { id: "pipeline", node: <SlidePipeline /> },
   { id: "modelos", node: <SlideModelos /> },
   { id: "resultados", node: <SlideResultados /> },
+  { id: "aplicacion", node: <SlideAplicacion /> },
+  { id: "errores", node: <SlideErrores /> },
   { id: "conclusiones", node: <SlideConclusiones /> },
 ];
 
