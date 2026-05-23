@@ -18,11 +18,12 @@ import {
 
 const tooltipStyle = {
   background: "#16151f",
-  border: "1px solid rgba(255,255,255,0.12)",
+  border: "1px solid rgba(255,255,255,0.15)",
   borderRadius: 12,
-  fontSize: 13,
+  fontSize: 14,
   color: "#f5f5f7",
-  padding: "8px 12px",
+  padding: "10px 14px",
+  boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
 } as const;
 
 /* ---- Donut: conversion split 12 / 88 ---- */
@@ -58,8 +59,8 @@ export function ConversionDonut() {
         </PieChart>
       </ResponsiveContainer>
       <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-        <span className="gradient-text text-4xl font-bold">12%</span>
-        <span className="text-xs font-medium uppercase tracking-widest text-faint">
+        <span className="gradient-text text-5xl font-bold">12%</span>
+        <span className="text-sm font-semibold uppercase tracking-widest text-muted">
           convierten
         </span>
       </div>
@@ -76,24 +77,24 @@ export function MetricsBarChart() {
     { metric: "F1 (sí)", CART: 0.36, RF: 0.46 },
   ];
   return (
-    <ResponsiveContainer width="100%" height={208}>
-      <BarChart data={data} barGap={6} margin={{ top: 8, right: 8, left: -18, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+    <ResponsiveContainer width="100%" height={240}>
+      <BarChart data={data} barGap={8} margin={{ top: 12, right: 12, left: -14, bottom: 4 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
         <XAxis
           dataKey="metric"
-          tick={{ fill: "#9a9aab", fontSize: 12 }}
-          axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+          tick={{ fill: "#b0b0c0", fontSize: 13 }}
+          axisLine={{ stroke: "rgba(255,255,255,0.12)" }}
           tickLine={false}
         />
         <YAxis
           domain={[0, 1]}
-          tick={{ fill: "#6b6b78", fontSize: 11 }}
+          tick={{ fill: "#8a8a9c", fontSize: 12 }}
           axisLine={false}
           tickLine={false}
         />
-        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "rgba(255,255,255,0.04)" }} />
+        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "rgba(255,255,255,0.05)" }} />
         <Legend
-          wrapperStyle={{ fontSize: 13, paddingTop: 8 }}
+          wrapperStyle={{ fontSize: 14, paddingTop: 10 }}
           iconType="circle"
         />
         <defs>
@@ -120,21 +121,21 @@ export function ConversionsBarChart() {
     { name: "Con Random Forest", conv: 805 },
   ];
   return (
-    <ResponsiveContainer width="100%" height={186}>
-      <BarChart data={data} margin={{ top: 8, right: 8, left: -14, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+    <ResponsiveContainer width="100%" height={220}>
+      <BarChart data={data} margin={{ top: 12, right: 12, left: -10, bottom: 4 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" vertical={false} />
         <XAxis
           dataKey="name"
-          tick={{ fill: "#9a9aab", fontSize: 12 }}
-          axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+          tick={{ fill: "#b0b0c0", fontSize: 13 }}
+          axisLine={{ stroke: "rgba(255,255,255,0.12)" }}
           tickLine={false}
         />
         <YAxis
-          tick={{ fill: "#6b6b78", fontSize: 11 }}
+          tick={{ fill: "#8a8a9c", fontSize: 12 }}
           axisLine={false}
           tickLine={false}
         />
-        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "rgba(255,255,255,0.04)" }} />
+        <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "rgba(255,255,255,0.05)" }} />
         <defs>
           <linearGradient id="rfConvGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#22d3ee" />
@@ -163,24 +164,24 @@ export function GainCurve() {
     { contacted: 100, modelo: 100, azar: 100 },
   ];
   return (
-    <ResponsiveContainer width="100%" height={186}>
-      <LineChart data={data} margin={{ top: 8, right: 12, left: -18, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+    <ResponsiveContainer width="100%" height={220}>
+      <LineChart data={data} margin={{ top: 12, right: 16, left: -14, bottom: 4 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
         <XAxis
           dataKey="contacted"
-          tick={{ fill: "#9a9aab", fontSize: 11 }}
-          axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+          tick={{ fill: "#b0b0c0", fontSize: 12 }}
+          axisLine={{ stroke: "rgba(255,255,255,0.12)" }}
           tickLine={false}
           unit="%"
         />
         <YAxis
-          tick={{ fill: "#6b6b78", fontSize: 11 }}
+          tick={{ fill: "#8a8a9c", fontSize: 12 }}
           axisLine={false}
           tickLine={false}
           unit="%"
         />
         <Tooltip contentStyle={tooltipStyle} />
-        <Legend wrapperStyle={{ fontSize: 13, paddingTop: 6 }} iconType="plainline" />
+        <Legend wrapperStyle={{ fontSize: 14, paddingTop: 8 }} iconType="plainline" />
         <Line
           type="monotone"
           dataKey="modelo"
@@ -194,7 +195,7 @@ export function GainCurve() {
           type="monotone"
           dataKey="azar"
           name="Llamando al azar"
-          stroke="#6b6b78"
+          stroke="#8a8a9c"
           strokeWidth={2}
           strokeDasharray="5 5"
           dot={false}
