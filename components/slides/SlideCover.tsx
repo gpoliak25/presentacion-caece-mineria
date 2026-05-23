@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { SlideShell, Item } from "../slide-shell";
-import { RandomForestTree } from "../RandomForestTree";
+import { RandomForestBackground } from "../RandomForestTree";
 
 const columns = [
   {
@@ -22,10 +22,8 @@ const columns = [
 export function SlideCover() {
   return (
     <SlideShell>
-      {/* Random Forest Tree - positioned on the right */}
-      <div className="pointer-events-none absolute right-0 top-1/2 h-[500px] w-[400px] -translate-y-1/2 opacity-60 lg:right-8 lg:h-[600px] lg:w-[480px] lg:opacity-70">
-        <RandomForestTree />
-      </div>
+      {/* Mini-bosque de fondo distribuido en las esquinas */}
+      <RandomForestBackground />
 
       <div className="relative z-10 flex flex-col items-center text-center">
         <Item>

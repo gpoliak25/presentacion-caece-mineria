@@ -2,408 +2,114 @@
 
 import { motion } from "framer-motion";
 
-export function RandomForestTree() {
+// Mini árbol de decisión individual
+function MiniTree({ 
+  x, 
+  y, 
+  scale = 1, 
+  delay = 0,
+  color = "violet" 
+}: { 
+  x: number; 
+  y: number; 
+  scale?: number; 
+  delay?: number;
+  color?: "violet" | "cyan" | "mixed";
+}) {
+  const colors = {
+    violet: { stroke: "#a78bfa", fill: "#8b5cf6" },
+    cyan: { stroke: "#22d3ee", fill: "#06b6d4" },
+    mixed: { stroke: "#a78bfa", fill: "#22d3ee" },
+  };
+  
+  const { stroke, fill } = colors[color];
+  
   return (
-    <svg
-      viewBox="0 0 400 500"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-full w-full"
+    <motion.g
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, delay, ease: "easeOut" }}
+      transform={`translate(${x}, ${y}) scale(${scale})`}
     >
-      <defs>
-        <linearGradient id="treeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#a78bfa" />
-          <stop offset="100%" stopColor="#22d3ee" />
-        </linearGradient>
-        <linearGradient id="glowGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.4" />
-        </linearGradient>
-        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
+      {/* Ramas */}
+      <line x1="0" y1="0" x2="-20" y2="-25" stroke={stroke} strokeWidth="1.5" opacity="0.6" />
+      <line x1="0" y1="0" x2="20" y2="-25" stroke={stroke} strokeWidth="1.5" opacity="0.6" />
+      <line x1="-20" y1="-25" x2="-32" y2="-45" stroke={stroke} strokeWidth="1" opacity="0.5" />
+      <line x1="-20" y1="-25" x2="-8" y2="-45" stroke={stroke} strokeWidth="1" opacity="0.5" />
+      <line x1="20" y1="-25" x2="8" y2="-45" stroke={stroke} strokeWidth="1" opacity="0.5" />
+      <line x1="20" y1="-25" x2="32" y2="-45" stroke={stroke} strokeWidth="1" opacity="0.5" />
+      
+      {/* Nodo raíz */}
+      <circle cx="0" cy="0" r="5" fill={fill} opacity="0.8" />
+      
+      {/* Nodos intermedios */}
+      <circle cx="-20" cy="-25" r="4" fill="none" stroke={stroke} strokeWidth="1.5" opacity="0.7" />
+      <circle cx="20" cy="-25" r="4" fill="none" stroke={stroke} strokeWidth="1.5" opacity="0.7" />
+      
+      {/* Nodos hoja */}
+      <circle cx="-32" cy="-45" r="3" fill={fill} opacity="0.6" />
+      <circle cx="-8" cy="-45" r="3" fill={fill} opacity="0.6" />
+      <circle cx="8" cy="-45" r="3" fill={fill} opacity="0.6" />
+      <circle cx="32" cy="-45" r="3" fill={fill} opacity="0.6" />
+    </motion.g>
+  );
+}
 
-      {/* Main trunk */}
-      <motion.line
-        x1="200"
-        y1="480"
-        x2="200"
-        y2="320"
-        stroke="url(#treeGradient)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        filter="url(#glow)"
-      />
+export function RandomForestBackground() {
+  // Posiciones distribuidas en las esquinas y bordes, evitando el centro
+  const trees = [
+    // Esquina superior izquierda
+    { x: 80, y: 120, scale: 0.7, delay: 0.1, color: "violet" as const },
+    { x: 180, y: 80, scale: 0.5, delay: 0.3, color: "cyan" as const },
+    
+    // Esquina superior derecha
+    { x: 1150, y: 100, scale: 0.8, delay: 0.2, color: "mixed" as const },
+    { x: 1280, y: 150, scale: 0.6, delay: 0.4, color: "violet" as const },
+    
+    // Esquina inferior izquierda
+    { x: 100, y: 580, scale: 0.6, delay: 0.5, color: "cyan" as const },
+    { x: 200, y: 650, scale: 0.8, delay: 0.2, color: "violet" as const },
+    
+    // Esquina inferior derecha
+    { x: 1200, y: 600, scale: 0.9, delay: 0.1, color: "mixed" as const },
+    { x: 1320, y: 520, scale: 0.5, delay: 0.6, color: "cyan" as const },
+    { x: 1100, y: 680, scale: 0.7, delay: 0.3, color: "violet" as const },
+    
+    // Bordes laterales
+    { x: 50, y: 350, scale: 0.5, delay: 0.4, color: "violet" as const },
+    { x: 1350, y: 320, scale: 0.6, delay: 0.5, color: "cyan" as const },
+  ];
 
-      {/* Level 1 branches */}
-      <motion.line
-        x1="200"
-        y1="320"
-        x2="120"
-        y2="240"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="200"
-        y1="320"
-        x2="280"
-        y2="240"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.7 }}
-        filter="url(#glow)"
-      />
-
-      {/* Level 2 branches - Left side */}
-      <motion.line
-        x1="120"
-        y1="240"
-        x2="70"
-        y2="160"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.0 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="120"
-        y1="240"
-        x2="160"
-        y2="160"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.1 }}
-        filter="url(#glow)"
-      />
-
-      {/* Level 2 branches - Right side */}
-      <motion.line
-        x1="280"
-        y1="240"
-        x2="240"
-        y2="160"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.2 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="280"
-        y1="240"
-        x2="330"
-        y2="160"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.3 }}
-        filter="url(#glow)"
-      />
-
-      {/* Level 3 - Leaf branches */}
-      <motion.line
-        x1="70"
-        y1="160"
-        x2="40"
-        y2="90"
-        stroke="url(#treeGradient)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 1.5 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="70"
-        y1="160"
-        x2="95"
-        y2="90"
-        stroke="url(#treeGradient)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 1.6 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="160"
-        y1="160"
-        x2="140"
-        y2="90"
-        stroke="url(#treeGradient)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 1.7 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="160"
-        y1="160"
-        x2="185"
-        y2="90"
-        stroke="url(#treeGradient)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 1.8 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="240"
-        y1="160"
-        x2="215"
-        y2="90"
-        stroke="url(#treeGradient)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 1.9 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="240"
-        y1="160"
-        x2="260"
-        y2="90"
-        stroke="url(#treeGradient)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 2.0 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="330"
-        y1="160"
-        x2="305"
-        y2="90"
-        stroke="url(#treeGradient)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 2.1 }}
-        filter="url(#glow)"
-      />
-      <motion.line
-        x1="330"
-        y1="160"
-        x2="360"
-        y2="90"
-        stroke="url(#treeGradient)"
-        strokeWidth="1"
-        strokeLinecap="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 2.2 }}
-        filter="url(#glow)"
-      />
-
-      {/* Root node */}
-      <motion.circle
-        cx="200"
-        cy="320"
-        r="8"
-        fill="#0d0c14"
-        stroke="url(#treeGradient)"
-        strokeWidth="2"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.5 }}
-        filter="url(#glow)"
-      />
-
-      {/* Level 1 nodes */}
-      <motion.circle
-        cx="120"
-        cy="240"
-        r="7"
-        fill="#0d0c14"
-        stroke="url(#treeGradient)"
-        strokeWidth="2"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.9 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="280"
-        cy="240"
-        r="7"
-        fill="#0d0c14"
-        stroke="url(#treeGradient)"
-        strokeWidth="2"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 1.0 }}
-        filter="url(#glow)"
-      />
-
-      {/* Level 2 nodes */}
-      <motion.circle
-        cx="70"
-        cy="160"
-        r="6"
-        fill="#0d0c14"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 1.4 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="160"
-        cy="160"
-        r="6"
-        fill="#0d0c14"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 1.45 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="240"
-        cy="160"
-        r="6"
-        fill="#0d0c14"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 1.5 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="330"
-        cy="160"
-        r="6"
-        fill="#0d0c14"
-        stroke="url(#treeGradient)"
-        strokeWidth="1.5"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 1.55 }}
-        filter="url(#glow)"
-      />
-
-      {/* Leaf nodes (filled) */}
-      <motion.circle
-        cx="40"
-        cy="90"
-        r="5"
-        fill="url(#treeGradient)"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.3 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="95"
-        cy="90"
-        r="5"
-        fill="url(#treeGradient)"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.35 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="140"
-        cy="90"
-        r="5"
-        fill="url(#treeGradient)"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.4 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="185"
-        cy="90"
-        r="5"
-        fill="url(#treeGradient)"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.45 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="215"
-        cy="90"
-        r="5"
-        fill="url(#treeGradient)"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.5 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="260"
-        cy="90"
-        r="5"
-        fill="url(#treeGradient)"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.55 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="305"
-        cy="90"
-        r="5"
-        fill="url(#treeGradient)"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.6 }}
-        filter="url(#glow)"
-      />
-      <motion.circle
-        cx="360"
-        cy="90"
-        r="5"
-        fill="url(#treeGradient)"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.3, delay: 2.65 }}
-        filter="url(#glow)"
-      />
-    </svg>
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <svg
+        viewBox="0 0 1400 750"
+        className="h-full w-full"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <defs>
+          <radialGradient id="glow-violet" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="glow-cyan" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        
+        {/* Glows sutiles en las esquinas */}
+        <circle cx="100" cy="600" r="150" fill="url(#glow-violet)" opacity="0.4" />
+        <circle cx="1250" cy="150" r="120" fill="url(#glow-cyan)" opacity="0.3" />
+        <circle cx="1200" cy="620" r="180" fill="url(#glow-violet)" opacity="0.3" />
+        
+        {/* Mini árboles */}
+        <g opacity="0.5">
+          {trees.map((tree, i) => (
+            <MiniTree key={i} {...tree} />
+          ))}
+        </g>
+      </svg>
+    </div>
   );
 }
