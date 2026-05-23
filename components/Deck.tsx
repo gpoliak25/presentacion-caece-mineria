@@ -16,17 +16,17 @@ import { SlideConclusiones } from "./slides/SlideConclusiones";
 import { SlideBibliografia } from "./slides/SlideBibliografia";
 
 const slides = [
-  { id: "portada", node: <SlideCover /> },
-  { id: "problema", node: <SlideProblema /> },
-  { id: "datos", node: <SlideDatos /> },
-  { id: "trampa", node: <SlideTrampa /> },
-  { id: "pipeline", node: <SlidePipeline /> },
-  { id: "modelos", node: <SlideModelos /> },
-  { id: "resultados", node: <SlideResultados /> },
-  { id: "aplicacion", node: <SlideAplicacion /> },
-  { id: "errores", node: <SlideErrores /> },
-  { id: "conclusiones", node: <SlideConclusiones /> },
-  { id: "bibliografia", node: <SlideBibliografia /> },
+  { id: "portada",     node: <SlideCover />,        presenter: null },
+  { id: "problema",   node: <SlideProblema />,      presenter: "LORENA LÓPEZ" },
+  { id: "datos",      node: <SlideDatos />,         presenter: "LORENA LÓPEZ" },
+  { id: "trampa",     node: <SlideTrampa />,        presenter: "LORENA LÓPEZ" },
+  { id: "pipeline",   node: <SlidePipeline />,      presenter: "LORENA LÓPEZ" },
+  { id: "modelos",    node: <SlideModelos />,       presenter: "LORENA LÓPEZ" },
+  { id: "resultados", node: <SlideResultados />,    presenter: "GISELA POLIAK" },
+  { id: "aplicacion", node: <SlideAplicacion />,    presenter: "GISELA POLIAK" },
+  { id: "errores",    node: <SlideErrores />,       presenter: "GISELA POLIAK" },
+  { id: "conclusiones", node: <SlideConclusiones />, presenter: "GISELA POLIAK" },
+  { id: "bibliografia", node: <SlideBibliografia />, presenter: "GISELA POLIAK" },
 ];
 
 const LAST = slides.length - 1;
@@ -184,6 +184,16 @@ export default function Deck() {
           </NavBtn>
         </div>
       </div>
+
+      {/* Presenter badge — top right */}
+      {slides[index].presenter && (
+        <div className="pointer-events-none absolute right-7 top-6 z-50 flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-cyan animate-pulse" />
+          <span className="font-mono text-xs font-semibold tracking-widest text-fg/80 uppercase">
+            {slides[index].presenter}
+          </span>
+        </div>
+      )}
 
       {/* Slide counter */}
       <div className="pointer-events-none absolute bottom-7 right-7 z-50 hidden font-mono text-sm text-faint sm:block">
