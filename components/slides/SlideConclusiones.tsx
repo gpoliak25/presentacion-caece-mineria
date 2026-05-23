@@ -81,7 +81,7 @@ export function SlideConclusiones() {
   return (
     <SlideShell>
       <Item>
-        <div className="section-label mb-3 flex items-center justify-center gap-2 text-violet">
+        <div className="section-label mb-2 flex items-center justify-center gap-2 text-violet">
           <span>09</span>
           <span className="opacity-40">/</span>
           <span>Impacto y Conclusiones</span>
@@ -89,47 +89,47 @@ export function SlideConclusiones() {
       </Item>
 
       <Item>
-        <h2 className="text-center text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.4rem]">
+        <h2 className="text-center text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl">
           <span className="gradient-text">+244%</span>{" "}
           <span className="text-fg">de conversiones con el mismo presupuesto</span>
         </h2>
-        <p className="mt-2 text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber/30 bg-amber/10 px-3 py-1 text-xs font-semibold text-amber">
+        <p className="mt-1.5 text-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber/30 bg-amber/10 px-2.5 py-0.5 text-[0.65rem] font-semibold text-amber">
             Escenario hipotético ilustrativo
           </span>
         </p>
       </Item>
 
-      <div className="mt-5 grid gap-3 lg:grid-cols-2">
+      <div className="mt-3 grid flex-1 gap-2 lg:grid-cols-2">
         {/* Left — impact */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           {/* Comparison cards */}
           <Item>
-            <div className="flex items-center gap-2.5">
-              <Card className="flex-1 p-4 text-center">
+            <div className="flex items-center gap-2">
+              <Card className="flex-1 p-3 text-center">
                 <IconBadge icon={PhoneOff} accent="red" size="sm" />
-                <p className="section-label mt-2 text-faint">Llamando al azar</p>
-                <p className="mt-1 text-4xl font-bold text-fg">~234</p>
-                <p className="text-xs text-faint">conversiones / 2.000 llamadas</p>
+                <p className="section-label mt-1.5 text-faint">Llamando al azar</p>
+                <p className="mt-0.5 text-2xl font-bold text-fg">~234</p>
+                <p className="text-[0.65rem] text-faint">conversiones / 2.000 llamadas</p>
               </Card>
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet to-cyan">
-                <ArrowRight className="text-ink" size={17} />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet to-cyan">
+                <ArrowRight className="text-ink" size={14} />
               </div>
-              <Card glow="cyan" className="flex-1 p-4 text-center">
+              <Card glow="cyan" className="flex-1 p-3 text-center">
                 <IconBadge icon={Bot} accent="cyan" size="sm" />
-                <p className="section-label mt-2 text-faint">Con el modelo RF</p>
-                <p className="gradient-text-cyan mt-1 text-4xl font-bold">~805</p>
-                <p className="text-xs text-faint">conversiones / 2.000 llamadas</p>
+                <p className="section-label mt-1.5 text-faint">Con el modelo RF</p>
+                <p className="gradient-text-cyan mt-0.5 text-2xl font-bold">~805</p>
+                <p className="text-[0.65rem] text-faint">conversiones / 2.000 llamadas</p>
               </Card>
             </div>
           </Item>
 
           {/* Conversions chart */}
           <Item>
-            <Card className="p-4">
-              <div className="mb-1 flex items-center gap-2.5">
-                <BarChart3 className="text-cyan" size={18} />
-                <span className="text-sm font-semibold text-fg">
+            <Card className="p-3">
+              <div className="mb-1 flex items-center gap-2">
+                <BarChart3 className="text-cyan" size={14} />
+                <span className="text-xs font-semibold text-fg">
                   Conversiones por cada 2.000 llamadas
                 </span>
               </div>
@@ -139,15 +139,15 @@ export function SlideConclusiones() {
 
           {/* ROI table */}
           <Item>
-            <Card className="p-4">
-              <div className="mb-3 flex items-center gap-2.5">
-                <Coins className="text-amber" size={18} />
-                <span className="text-sm font-semibold text-fg">
+            <Card className="p-3">
+              <div className="mb-2 flex items-center gap-2">
+                <Coins className="text-amber" size={14} />
+                <span className="text-xs font-semibold text-fg">
                   Análisis de ROI
                 </span>
               </div>
-              <div className="overflow-hidden rounded-xl border border-line">
-                <div className="grid grid-cols-[1.2fr_0.8fr_1fr_0.95fr_0.85fr] bg-white/[0.03] px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-wide text-faint">
+              <div className="overflow-hidden rounded-lg border border-line">
+                <div className="grid grid-cols-[1.2fr_0.8fr_1fr_0.95fr_0.85fr] bg-white/[0.03] px-2.5 py-1 text-[0.55rem] font-semibold uppercase tracking-wide text-faint">
                   <span>Escenario</span>
                   <span>Conv.</span>
                   <span>Ingreso</span>
@@ -157,18 +157,18 @@ export function SlideConclusiones() {
                 {roi.map((r) => (
                   <div
                     key={r.scenario}
-                    className={`grid grid-cols-[1.2fr_0.8fr_1fr_0.95fr_0.85fr] items-center border-t border-line px-3 py-2 ${
+                    className={`grid grid-cols-[1.2fr_0.8fr_1fr_0.95fr_0.85fr] items-center border-t border-line px-2.5 py-1.5 ${
                       r.highlight ? "bg-cyan/[0.06]" : ""
                     }`}
                   >
-                    <span className="text-xs font-medium text-fg">
+                    <span className="text-[0.7rem] font-medium text-fg">
                       {r.scenario}
                     </span>
-                    <span className="font-mono text-xs text-muted">{r.conv}</span>
-                    <span className="font-mono text-xs text-fg">{r.income}</span>
-                    <span className="font-mono text-xs text-muted">{r.cost}</span>
+                    <span className="font-mono text-[0.7rem] text-muted">{r.conv}</span>
+                    <span className="font-mono text-[0.7rem] text-fg">{r.income}</span>
+                    <span className="font-mono text-[0.7rem] text-muted">{r.cost}</span>
                     <span
-                      className="text-xs font-bold"
+                      className="text-[0.7rem] font-bold"
                       style={{ color: r.roiColor }}
                     >
                       {r.roi}
@@ -176,31 +176,28 @@ export function SlideConclusiones() {
                   </div>
                 ))}
               </div>
-              <p className="mt-2 text-[0.7rem] text-faint">
-                Valores ilustrativos para demostrar el potencial del modelo. Los supuestos económicos ($2.000/conversión y $50/llamada) deben validarse con el área comercial del banco.
-              </p>
             </Card>
           </Item>
         </div>
 
         {/* Right — conclusions */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           {panels.map((p) => (
             <Item key={p.title}>
-              <Card className="p-4">
-                <div className="mb-2.5 flex items-center gap-2.5">
+              <Card className="p-3">
+                <div className="mb-1.5 flex items-center gap-2">
                   <IconBadge icon={p.icon} accent={p.accent} size="sm" />
-                  <span className="text-sm font-semibold text-fg">
+                  <span className="text-xs font-semibold text-fg">
                     {p.title}
                   </span>
                 </div>
-                <ul className="flex flex-col gap-1.5">
+                <ul className="flex flex-col gap-1">
                   {p.points.map((pt) => (
                     <li
                       key={pt}
-                      className="flex items-start gap-2 text-xs leading-relaxed text-muted"
+                      className="flex items-start gap-1.5 text-[0.65rem] leading-relaxed text-muted"
                     >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/30" />
+                      <span className="mt-1.5 h-0.5 w-0.5 shrink-0 rounded-full bg-white/30" />
                       {pt}
                     </li>
                   ))}
@@ -212,19 +209,18 @@ export function SlideConclusiones() {
       </div>
 
       {/* Final answer */}
-      <Item className="mt-3">
-        <Card glow="cyan" className="flex items-center gap-4 p-5">
-          <IconBadge icon={Trophy} accent="emerald" size="md" />
+      <Item className="mt-2">
+        <Card glow="cyan" className="flex items-center gap-3 p-3">
+          <IconBadge icon={Trophy} accent="emerald" size="sm" />
           <div>
-            <p className="text-lg font-bold text-fg">
+            <p className="text-sm font-bold text-fg">
               Respuesta:{" "}
               <span className="gradient-text-cyan">
                 SÍ podemos — y los números lo prueban
               </span>
             </p>
-            <p className="mt-1 text-sm text-muted">
-              El modelo triplicó los resultados sin agregar una sola llamada
-              adicional.
+            <p className="mt-0.5 text-xs text-muted">
+              El modelo triplicó los resultados sin agregar una sola llamada adicional.
             </p>
           </div>
         </Card>

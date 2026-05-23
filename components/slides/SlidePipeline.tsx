@@ -82,24 +82,24 @@ function StepCard({ s }: { s: Step }) {
   const hex = accentHex[s.accent];
   const Icon = s.icon;
   return (
-    <Card className="flex gap-3.5 p-4">
+    <Card className="flex gap-2.5 p-3">
       <div
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
         style={{ background: `${hex}1a`, border: `1px solid ${hex}33` }}
       >
-        <Icon size={17} style={{ color: hex }} strokeWidth={2} />
+        <Icon size={14} style={{ color: hex }} strokeWidth={2} />
       </div>
       <div className="min-w-0">
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-1.5">
           <span
-            className="font-mono text-[0.65rem] font-bold uppercase tracking-widest"
+            className="font-mono text-[0.55rem] font-bold uppercase tracking-widest"
             style={{ color: hex }}
           >
             {s.num}
           </span>
-          <span className="text-xs font-semibold text-fg">{s.title}</span>
+          <span className="text-[0.7rem] font-semibold text-fg">{s.title}</span>
         </div>
-        <p className="mt-0.5 text-[0.72rem] leading-relaxed text-muted">
+        <p className="mt-0.5 text-[0.6rem] leading-relaxed text-muted">
           {s.detail}
         </p>
       </div>
@@ -122,7 +122,7 @@ export function SlidePipeline() {
         </Heading>
       </Item>
 
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-3 grid flex-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {steps.map((s) => (
           <Item key={s.num}>
             <StepCard s={s} />
@@ -130,17 +130,16 @@ export function SlidePipeline() {
         ))}
       </div>
 
-      <Item className="mt-4">
-        <Card glow="cyan" className="flex items-center gap-3 p-4">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet to-cyan">
-            <span className="text-xs font-bold text-ink">!</span>
+      <Item className="mt-2">
+        <Card glow="cyan" className="flex items-center gap-2 p-3">
+          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet to-cyan">
+            <span className="text-[0.65rem] font-bold text-ink">!</span>
           </div>
-          <p className="text-sm leading-relaxed text-muted">
+          <p className="text-[0.7rem] leading-relaxed text-muted">
             Los pasos{" "}
             <span className="font-semibold text-fg">03 (leakage)</span> y{" "}
             <span className="font-semibold text-fg">04 (OHE unificado)</span>{" "}
-            son críticos: cualquier fuga de información o asimetría de columnas
-            invalida los resultados aunque las métricas parezcan excelentes.
+            son críticos: cualquier fuga o asimetría de columnas invalida los resultados.
           </p>
         </Card>
       </Item>

@@ -68,21 +68,21 @@ export function SlideResultados() {
         </Heading>
       </Item>
 
-      <div className="mt-5 grid gap-3 lg:grid-cols-2">
+      <div className="mt-3 grid flex-1 gap-2 lg:grid-cols-2">
         {/* Left column */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           {/* Metrics table */}
           <Item>
-            <Card className="p-5">
-              <div className="mb-3 flex items-center gap-2.5">
-                <ClipboardList className="text-cyan" size={18} />
-                <span className="text-sm font-semibold text-fg">
-                  Comparación de métricas en el conjunto de prueba
+            <Card className="p-3">
+              <div className="mb-2 flex items-center gap-2">
+                <ClipboardList className="text-cyan" size={16} />
+                <span className="text-xs font-semibold text-fg">
+                  Comparación de métricas
                 </span>
-                <span className="text-xs text-faint">· 14.919 filas</span>
+                <span className="text-[0.65rem] text-faint">· 14.919 filas</span>
               </div>
-              <div className="overflow-hidden rounded-xl border border-line">
-                <div className="grid grid-cols-[1.3fr_1fr_1.3fr_1fr] bg-white/[0.03] px-3.5 py-2 text-[0.65rem] font-semibold uppercase tracking-wide text-faint">
+              <div className="overflow-hidden rounded-lg border border-line">
+                <div className="grid grid-cols-[1.3fr_1fr_1.3fr_1fr] bg-white/[0.03] px-2.5 py-1.5 text-[0.6rem] font-semibold uppercase tracking-wide text-faint">
                   <span>Métrica</span>
                   <span>CART</span>
                   <span>Random Forest</span>
@@ -91,16 +91,16 @@ export function SlideResultados() {
                 {rows.map((r) => (
                   <div
                     key={r.metric}
-                    className={`grid grid-cols-[1.3fr_1fr_1.3fr_1fr] items-center border-t border-line px-3.5 py-2 ${
+                    className={`grid grid-cols-[1.3fr_1fr_1.3fr_1fr] items-center border-t border-line px-2.5 py-1.5 ${
                       r.highlight ? "bg-cyan/[0.06]" : ""
                     }`}
                   >
-                    <span className="text-xs font-medium text-fg">
+                    <span className="text-[0.7rem] font-medium text-fg">
                       {r.metric}
                     </span>
-                    <span className="font-mono text-xs text-muted">{r.cart}</span>
+                    <span className="font-mono text-[0.7rem] text-muted">{r.cart}</span>
                     <span
-                      className={`font-mono text-xs ${
+                      className={`font-mono text-[0.7rem] ${
                         r.highlight ? "font-bold text-cyan" : "text-fg"
                       }`}
                     >
@@ -108,7 +108,7 @@ export function SlideResultados() {
                     </span>
                     <span>
                       <span
-                        className={`rounded-md border px-2 py-0.5 text-[0.65rem] font-semibold ${winBadge[r.win].cls}`}
+                        className={`rounded-md border px-1.5 py-0.5 text-[0.6rem] font-semibold ${winBadge[r.win].cls}`}
                       >
                         {winBadge[r.win].text}
                       </span>
@@ -121,18 +121,18 @@ export function SlideResultados() {
 
           {/* How to read */}
           <Item>
-            <Card className="p-5">
-              <div className="mb-3 flex items-center gap-2.5">
-                <BookOpen className="text-violet" size={18} />
-                <span className="text-sm font-semibold text-fg">
+            <Card className="p-3">
+              <div className="mb-2 flex items-center gap-2">
+                <BookOpen className="text-violet" size={16} />
+                <span className="text-xs font-semibold text-fg">
                   Cómo leer estas métricas
                 </span>
               </div>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-1.5">
                 {reading.map((r) => (
                   <li
                     key={r.strong}
-                    className="flex items-start gap-2 text-xs leading-relaxed text-muted"
+                    className="flex items-start gap-1.5 text-[0.7rem] leading-relaxed text-muted"
                   >
                     <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-violet" />
                     <span>
@@ -147,17 +147,16 @@ export function SlideResultados() {
 
           {/* Accuracy warning */}
           <Item>
-            <Card className="flex items-start gap-3 p-4">
-              <AlertTriangle className="mt-0.5 shrink-0 text-amber" size={18} />
+            <Card className="flex items-start gap-2 p-3">
+              <AlertTriangle className="mt-0.5 shrink-0 text-amber" size={16} />
               <div>
-                <p className="text-sm font-semibold text-fg">
+                <p className="text-xs font-semibold text-fg">
                   ¿Por qué el Accuracy engaña?
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-muted">
-                  Un modelo que siempre diga “no convierte” tendría 88% de
+                <p className="mt-0.5 text-[0.7rem] leading-relaxed text-muted">
+                  Un modelo que siempre diga "no convierte" tendría 88% de
                   accuracy sin predecir nada útil. Por eso usamos el{" "}
-                  <span className="font-semibold text-cyan">AUC</span> como
-                  métrica central del proyecto.
+                  <span className="font-semibold text-cyan">AUC</span>.
                 </p>
               </div>
             </Card>
@@ -165,14 +164,14 @@ export function SlideResultados() {
         </div>
 
         {/* Right column */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           {/* Visual comparison */}
           <Item>
-            <Card className="p-5">
-              <div className="mb-2 flex items-center gap-2.5">
-                <BarChart3 className="text-cyan" size={18} />
-                <span className="text-sm font-semibold text-fg">
-                  Comparación visual de métricas
+            <Card className="p-3">
+              <div className="mb-1 flex items-center gap-2">
+                <BarChart3 className="text-cyan" size={16} />
+                <span className="text-xs font-semibold text-fg">
+                  Comparación visual
                 </span>
               </div>
               <MetricsBarChart />
@@ -181,16 +180,14 @@ export function SlideResultados() {
 
           {/* AUC usable */}
           <Item>
-            <Card glow="cyan" className="flex items-start gap-3 p-4">
-              <ShieldCheck className="mt-0.5 shrink-0 text-emerald" size={18} />
+            <Card glow="cyan" className="flex items-start gap-2 p-3">
+              <ShieldCheck className="mt-0.5 shrink-0 text-emerald" size={16} />
               <div>
-                <p className="text-sm font-semibold text-fg">
+                <p className="text-xs font-semibold text-fg">
                   AUC 0.79 → usable en producción
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-muted">
-                  Un modelo con AUC 0.79 puede ordenar una lista de 1.000
-                  prospectos y poner los más prometedores primero — exactamente
-                  lo que necesita el call center.
+                <p className="mt-0.5 text-[0.7rem] leading-relaxed text-muted">
+                  El modelo ordena prospectos poniendo los más prometedores primero.
                 </p>
               </div>
             </Card>
@@ -198,18 +195,18 @@ export function SlideResultados() {
 
           {/* Top variables */}
           <Item>
-            <Card className="p-5">
-              <div className="mb-3 flex items-center gap-2.5">
-                <Star className="text-violet" size={18} />
-                <span className="text-sm font-semibold text-fg">
-                  Top variables más importantes (RF)
+            <Card className="p-3">
+              <div className="mb-2 flex items-center gap-2">
+                <Star className="text-violet" size={16} />
+                <span className="text-xs font-semibold text-fg">
+                  Top variables (RF)
                 </span>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {topVars.map((v, i) => (
                   <span
                     key={v}
-                    className={`rounded-lg border px-2.5 py-1 font-mono text-xs ${
+                    className={`rounded-md border px-2 py-0.5 font-mono text-[0.65rem] ${
                       i === 0
                         ? "border-cyan/40 bg-cyan/10 font-semibold text-cyan"
                         : "border-line bg-white/[0.03] text-muted"

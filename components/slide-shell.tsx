@@ -19,16 +19,16 @@ export const itemV: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
-/* Full-viewport slide frame with consistent padding + centering */
+/* Full-viewport slide frame with consistent padding + centering — no scroll */
 export function SlideShell({ children }: { children: ReactNode }) {
   return (
     <motion.section
       variants={containerV}
       initial="hidden"
       animate="show"
-      className="deck-scroll no-bar relative z-10 h-[100dvh] w-full overflow-y-auto"
+      className="relative z-10 flex h-[100dvh] w-full flex-col overflow-hidden"
     >
-      <div className="mx-auto flex min-h-full max-w-[1200px] flex-col justify-center px-7 py-16 sm:px-10 md:px-14">
+      <div className="mx-auto flex h-full w-full max-w-[1200px] flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10">
         {children}
       </div>
     </motion.section>

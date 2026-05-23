@@ -74,29 +74,29 @@ const models: Model[] = [
 function ModelCard({ m }: { m: Model }) {
   const hex = m.accent === "cyan" ? "#22d3ee" : "#a78bfa";
   return (
-    <Card className="flex h-full flex-col p-5">
-      <div className="flex items-center gap-3.5">
-        <IconBadge icon={m.icon} accent={m.accent} size="md" />
+    <Card className="flex h-full flex-col p-3">
+      <div className="flex items-center gap-2.5">
+        <IconBadge icon={m.icon} accent={m.accent} size="sm" />
         <div>
           <p
-            className="text-[0.7rem] font-bold uppercase tracking-widest"
+            className="text-[0.6rem] font-bold uppercase tracking-widest"
             style={{ color: hex }}
           >
             {m.tag}
           </p>
-          <h3 className="text-lg font-bold text-fg">{m.name}</h3>
+          <h3 className="text-sm font-bold text-fg">{m.name}</h3>
         </div>
       </div>
-      <p className="mt-2 text-xs text-faint">{m.subtitle}</p>
+      <p className="mt-1.5 text-[0.65rem] text-faint">{m.subtitle}</p>
 
-      <ul className="mt-3.5 flex flex-col gap-2">
+      <ul className="mt-2 flex flex-col gap-1">
         {m.bullets.map((b) => (
           <li
             key={b}
-            className="flex items-start gap-2 text-xs leading-relaxed text-muted"
+            className="flex items-start gap-1.5 text-[0.65rem] leading-relaxed text-muted"
           >
             <span
-              className="mt-1 h-1 w-1 shrink-0 rounded-full"
+              className="mt-1 h-0.5 w-0.5 shrink-0 rounded-full"
               style={{ background: hex }}
             />
             {b}
@@ -104,11 +104,11 @@ function ModelCard({ m }: { m: Model }) {
         ))}
       </ul>
 
-      <div className="mt-3.5 flex flex-wrap gap-1.5">
+      <div className="mt-2 flex flex-wrap gap-1">
         {m.hyper.map((h) => (
           <span
             key={h}
-            className="rounded-md border border-line bg-white/[0.03] px-2 py-0.5 font-mono text-[0.68rem] text-muted"
+            className="rounded-md border border-line bg-white/[0.03] px-1.5 py-0.5 font-mono text-[0.6rem] text-muted"
           >
             {h}
           </span>
@@ -118,22 +118,22 @@ function ModelCard({ m }: { m: Model }) {
       <div className="flex-1" />
 
       <div
-        className="mt-3.5 rounded-xl p-3"
+        className="mt-2 rounded-lg p-2"
         style={{ background: `${hex}12`, border: `1px solid ${hex}33` }}
       >
-        <div className="mb-2 flex items-center gap-2">
-          <BarChart3 size={14} style={{ color: hex }} />
-          <span className="text-xs font-semibold text-fg">
+        <div className="mb-1.5 flex items-center gap-1.5">
+          <BarChart3 size={12} style={{ color: hex }} />
+          <span className="text-[0.65rem] font-semibold text-fg">
             {m.resultLabel}
           </span>
         </div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-1.5">
           {m.stats.map((s) => (
             <div key={s.label}>
-              <p className="text-xl font-bold" style={{ color: hex }}>
+              <p className="text-lg font-bold" style={{ color: hex }}>
                 {s.value}
               </p>
-              <p className="text-[0.68rem] text-faint">{s.label}</p>
+              <p className="text-[0.6rem] text-faint">{s.label}</p>
             </div>
           ))}
         </div>
@@ -156,23 +156,21 @@ export function SlideModelos() {
         </Heading>
       </Item>
 
-      <Item className="mt-5">
-        <Card className="flex items-start gap-3.5 p-4">
+      <Item className="mt-3">
+        <Card className="flex items-start gap-3 p-3">
           <IconBadge icon={Zap} accent="amber" size="sm" />
           <div>
-            <p className="text-sm font-semibold text-fg">
+            <p className="text-xs font-semibold text-fg">
               El primer modelo nos engañó: 100% de accuracy
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-muted">
-              Un árbol de decisión sin restricciones memorizó cada cliente del
-              entrenamiento (overfitting). En datos nuevos, fallaba. La señal: un
-              100% casi nunca es buena noticia en ML.
+            <p className="mt-0.5 text-[0.7rem] leading-relaxed text-muted">
+              Un árbol sin restricciones memorizó cada cliente (overfitting). En datos nuevos, fallaba.
             </p>
           </div>
         </Card>
       </Item>
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-2">
+      <div className="mt-2 grid flex-1 gap-2 lg:grid-cols-2">
         <Item>
           <ModelCard m={models[0]} />
         </Item>
@@ -181,19 +179,16 @@ export function SlideModelos() {
         </Item>
       </div>
 
-      <Item className="mt-3">
-        <Card glow="cyan" className="flex items-start gap-3.5 p-4">
+      <Item className="mt-2">
+        <Card glow="cyan" className="flex items-start gap-3 p-3">
           <IconBadge icon={Scale} accent="cyan" size="sm" />
           <div>
-            <p className="text-sm font-semibold text-fg">
+            <p className="text-xs font-semibold text-fg">
               ¿Por qué <span className="font-mono text-cyan">class_weight=&apos;balanced&apos;</span>{" "}
-              es crucial aquí?
+              es crucial?
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-muted">
-              Con solo 12% de positivos, un modelo sin peso favorito aprende a
-              decir “no” siempre (88% accuracy). El balance forzado hace que cada
-              cliente que SÍ convierte valga 7× más en el entrenamiento — es
-              exactamente el cliente que nos interesa capturar.
+            <p className="mt-0.5 text-[0.7rem] leading-relaxed text-muted">
+              Con 12% de positivos, un modelo sin peso aprende a decir "no" siempre. El balance hace que cada cliente que SÍ convierte valga 7× más.
             </p>
           </div>
         </Card>

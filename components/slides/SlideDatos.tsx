@@ -37,7 +37,7 @@ function TypeBadge({ type }: { type: VarType }) {
   const s = typeStyle[type];
   return (
     <span
-      className="rounded-md px-2 py-0.5 font-mono text-[0.68rem] font-bold uppercase"
+      className="rounded-md px-1.5 py-0.5 font-mono text-[0.55rem] font-bold uppercase"
       style={{ color: s.color, background: s.bg }}
     >
       {type}
@@ -59,21 +59,21 @@ export function SlideDatos() {
         </Heading>
       </Item>
 
-      <div className="mt-6 grid gap-4 lg:grid-cols-2">
+      <div className="mt-3 grid flex-1 gap-2 lg:grid-cols-2">
         {/* Variables table */}
         <Item>
-          <Card className="h-full p-5">
-            <div className="mb-3 flex items-center gap-2.5">
-              <Database className="text-cyan" size={19} />
-              <span className="font-semibold text-fg">
+          <Card className="h-full p-3">
+            <div className="mb-2 flex items-center gap-2">
+              <Database className="text-cyan" size={16} />
+              <span className="text-xs font-semibold text-fg">
                 Variables del dataset
               </span>
-              <span className="text-xs text-faint">
-                · 16 predictoras + 1 objetivo (y) — duration eliminada por data leakage
+              <span className="text-[0.6rem] text-faint">
+                · 16 predictoras + 1 objetivo
               </span>
             </div>
-            <div className="overflow-hidden rounded-xl border border-line">
-              <div className="grid grid-cols-[1fr_52px_1.3fr] bg-white/[0.03] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wide text-faint">
+            <div className="overflow-hidden rounded-lg border border-line">
+              <div className="grid grid-cols-[1fr_48px_1.3fr] bg-white/[0.03] px-2.5 py-1 text-[0.55rem] font-semibold uppercase tracking-wide text-faint">
                 <span>Variable</span>
                 <span>Tipo</span>
                 <span>Descripción</span>
@@ -81,17 +81,17 @@ export function SlideDatos() {
               {variables.map((v) => (
                 <div
                   key={v.name}
-                  className="grid grid-cols-[1fr_52px_1.3fr] items-center border-t border-line px-3.5 py-[0.42rem]"
+                  className="grid grid-cols-[1fr_48px_1.3fr] items-center border-t border-line px-2.5 py-[0.3rem]"
                 >
                   <span
-                    className={`font-mono text-xs ${
+                    className={`font-mono text-[0.65rem] ${
                       v.type === "leak" ? "text-red line-through" : "text-fg"
                     }`}
                   >
                     {v.name}
                   </span>
                   <TypeBadge type={v.type} />
-                  <span className="text-xs leading-tight text-muted">
+                  <span className="text-[0.65rem] leading-tight text-muted">
                     {v.desc}
                   </span>
                 </div>
@@ -101,18 +101,18 @@ export function SlideDatos() {
         </Item>
 
         {/* Right column */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           {/* Missing values */}
           <Item>
-            <Card className="p-5">
-              <div className="mb-3 flex items-center gap-2.5">
-                <HelpCircle className="text-amber" size={19} />
-                <span className="font-semibold text-fg">
-                  Faltantes codificados como “unknown”
+            <Card className="p-3">
+              <div className="mb-2 flex items-center gap-2">
+                <HelpCircle className="text-amber" size={16} />
+                <span className="text-xs font-semibold text-fg">
+                  Faltantes codificados como "unknown"
                 </span>
               </div>
-              <div className="overflow-hidden rounded-xl border border-line">
-                <div className="grid grid-cols-[1fr_64px_56px_1.5fr] bg-white/[0.03] px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wide text-faint">
+              <div className="overflow-hidden rounded-lg border border-line">
+                <div className="grid grid-cols-[1fr_56px_48px_1.4fr] bg-white/[0.03] px-2.5 py-1 text-[0.55rem] font-semibold uppercase tracking-wide text-faint">
                   <span>Variable</span>
                   <span className="text-right">Cant.</span>
                   <span className="text-center">%</span>
@@ -121,19 +121,19 @@ export function SlideDatos() {
                 {missing.map((m) => (
                   <div
                     key={m.v}
-                    className="grid grid-cols-[1fr_64px_56px_1.5fr] items-center border-t border-line px-3.5 py-2"
+                    className="grid grid-cols-[1fr_56px_48px_1.4fr] items-center border-t border-line px-2.5 py-1.5"
                   >
-                    <span className="font-mono text-xs text-fg">{m.v}</span>
-                    <span className="font-mono text-xs text-muted text-right">{m.n}</span>
+                    <span className="font-mono text-[0.65rem] text-fg">{m.v}</span>
+                    <span className="text-right font-mono text-[0.65rem] text-muted">{m.n}</span>
                     <span className="flex justify-center">
                       <span
-                        className="rounded-md px-1.5 py-0.5 text-center text-[0.68rem] font-bold"
+                        className="rounded-md px-1 py-0.5 text-center text-[0.6rem] font-bold"
                         style={{ color: m.color, background: `${m.color}1f` }}
                       >
                         {m.pct}
                       </span>
                     </span>
-                    <span className="text-xs leading-tight text-muted pl-2">
+                    <span className="pl-2 text-[0.6rem] leading-tight text-muted">
                       {m.care}
                     </span>
                   </div>
@@ -144,29 +144,29 @@ export function SlideDatos() {
 
           {/* Class imbalance */}
           <Item>
-            <Card className="p-5">
-              <div className="mb-3.5 flex items-center gap-2.5">
-                <Scale className="text-violet" size={19} />
-                <span className="font-semibold text-fg">
+            <Card className="p-3">
+              <div className="mb-2 flex items-center gap-2">
+                <Scale className="text-violet" size={16} />
+                <span className="text-xs font-semibold text-fg">
                   Desbalance de clases — el gran desafío
                 </span>
               </div>
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2">
                 <div>
-                  <div className="mb-1 flex justify-between text-xs">
+                  <div className="mb-1 flex justify-between text-[0.7rem]">
                     <span className="text-muted">No convierte</span>
                     <span className="font-semibold text-fg">88%</span>
                   </div>
-                  <div className="h-3 w-full overflow-hidden rounded-full bg-white/[0.06]">
+                  <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
                     <div className="h-full w-[88%] rounded-full bg-white/20" />
                   </div>
                 </div>
                 <div>
-                  <div className="mb-1 flex justify-between text-xs">
+                  <div className="mb-1 flex justify-between text-[0.7rem]">
                     <span className="text-muted">Sí convierte</span>
                     <span className="font-semibold text-fg">12%</span>
                   </div>
-                  <div className="h-3 w-full overflow-hidden rounded-full bg-white/[0.06]">
+                  <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
                     <div className="h-full w-[12%] rounded-full bg-gradient-to-r from-violet to-cyan" />
                   </div>
                 </div>
@@ -176,14 +176,13 @@ export function SlideDatos() {
 
           {/* Key takeaway */}
           <Item>
-            <Card glow="cyan" className="flex items-start gap-3 p-5">
-              <Lightbulb className="mt-0.5 shrink-0 text-cyan" size={19} />
+            <Card glow="cyan" className="flex items-start gap-2 p-3">
+              <Lightbulb className="mt-0.5 shrink-0 text-cyan" size={16} />
               <div>
-                <p className="mb-1 font-semibold text-fg">Conclusión clave</p>
-                <p className="text-sm leading-relaxed text-muted">
-                  Con 88/12 de desbalance, un modelo que diga “nadie convierte”
-                  tiene 88% de accuracy… pero es completamente inútil. La métrica
-                  correcta es el{" "}
+                <p className="mb-0.5 text-xs font-semibold text-fg">Conclusión clave</p>
+                <p className="text-[0.7rem] leading-relaxed text-muted">
+                  Con 88/12 de desbalance, un modelo que diga "nadie convierte"
+                  tiene 88% de accuracy pero es inútil. Usamos{" "}
                   <span className="font-semibold text-cyan">AUC-ROC</span>.
                 </p>
               </div>

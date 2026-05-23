@@ -54,18 +54,17 @@ export function SlideAplicacion() {
         </Heading>
       </Item>
 
-      <div className="mt-5 grid gap-4 lg:grid-cols-2">
+      <div className="mt-3 grid flex-1 gap-2 lg:grid-cols-2">
         {/* Feature importance */}
         <Item>
-          <Card className="h-full p-5">
-            <div className="mb-4 flex items-center gap-2.5">
-              <BarChart2 className="text-cyan" size={19} />
-              <span className="font-semibold text-fg">
-                Variables más importantes — Random Forest
+          <Card className="h-full p-3">
+            <div className="mb-2 flex items-center gap-2">
+              <BarChart2 className="text-cyan" size={16} />
+              <span className="text-xs font-semibold text-fg">
+                Variables más importantes — RF
               </span>
-              <span className="text-xs text-faint">· reducción de impureza Gini</span>
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-2">
               {features.map((f) => (
                 <BarMeter
                   key={f.label}
@@ -76,45 +75,43 @@ export function SlideAplicacion() {
                 />
               ))}
             </div>
-            <p className="mt-4 text-[0.72rem] leading-relaxed text-faint">
+            <p className="mt-2 text-[0.6rem] leading-relaxed text-faint">
               <span className="font-semibold text-fg">poutcome_success</span> domina:
-              haber convertido antes multiplica la probabilidad más que cualquier otra
-              variable. Contacto celular y meses de alta actividad bancaria (mar, oct)
-              también predicen bien.
+              haber convertido antes multiplica la probabilidad más que cualquier otra variable.
             </p>
           </Card>
         </Item>
 
         {/* Business applications */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           {apps.map((a) => (
             <Item key={a.title}>
-              <Card className="flex items-start gap-3.5 p-4">
+              <Card className="flex items-start gap-2.5 p-3">
                 <IconBadge icon={a.icon} accent={a.accent} size="sm" />
                 <div>
-                  <p className="text-sm font-semibold text-fg">{a.title}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted">{a.body}</p>
+                  <p className="text-xs font-semibold text-fg">{a.title}</p>
+                  <p className="mt-0.5 text-[0.65rem] leading-relaxed text-muted">{a.body}</p>
                 </div>
               </Card>
             </Item>
           ))}
 
           <Item>
-            <Card glow="cyan" className="p-4">
-              <p className="text-sm font-semibold text-fg">
+            <Card glow="cyan" className="p-3">
+              <p className="text-xs font-semibold text-fg">
                 Insight clave de negocio
               </p>
-              <ul className="mt-2 flex flex-col gap-1.5">
+              <ul className="mt-1.5 flex flex-col gap-1">
                 {[
                   "Clientes con éxito previo son 4× más probables de convertir",
-                  "Saldo positivo (balance) indica mayor disposición al ahorro a plazo",
-                  "Contacto por celular duplica la tasa de respuesta vs. teléfono fijo",
+                  "Saldo positivo indica mayor disposición al ahorro a plazo",
+                  "Contacto celular duplica tasa de respuesta vs. fijo",
                 ].map((pt) => (
                   <li
                     key={pt}
-                    className="flex items-start gap-2 text-xs leading-relaxed text-muted"
+                    className="flex items-start gap-1.5 text-[0.65rem] leading-relaxed text-muted"
                   >
-                    <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-cyan-400" />
+                    <span className="mt-1 h-0.5 w-0.5 shrink-0 rounded-full bg-cyan-400" />
                     {pt}
                   </li>
                 ))}

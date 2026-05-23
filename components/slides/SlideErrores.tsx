@@ -56,63 +56,49 @@ export function SlideErrores() {
         </Heading>
       </Item>
 
-      <div className="mt-5 grid gap-4 lg:grid-cols-2">
+      <div className="mt-3 grid flex-1 gap-2 lg:grid-cols-2">
         {/* Error types */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           <Item>
-            <Card className="flex items-start gap-3.5 p-5">
+            <Card className="flex items-start gap-2.5 p-3">
               <IconBadge icon={XCircle} accent="red" size="sm" />
               <div>
-                <p className="text-sm font-semibold text-fg">
+                <p className="text-xs font-semibold text-fg">
                   Falso Negativo (FN) — oportunidad perdida
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-muted">
-                  El modelo predice "no convierte" pero el cliente{" "}
-                  <span className="font-semibold text-fg">sí lo haría</span>.
-                  No se hace la llamada → ingreso directo perdido. En un
-                  producto de alto valor como un depósito a plazo, cada FN
-                  tiene un costo de negocio real.
+                <p className="mt-0.5 text-[0.65rem] leading-relaxed text-muted">
+                  Modelo dice "no convierte" pero{" "}
+                  <span className="font-semibold text-fg">sí lo haría</span>. No se llama → ingreso perdido.
                 </p>
               </div>
             </Card>
           </Item>
 
           <Item>
-            <Card className="flex items-start gap-3.5 p-5">
+            <Card className="flex items-start gap-2.5 p-3">
               <IconBadge icon={CheckCircle2} accent="amber" size="sm" />
               <div>
-                <p className="text-sm font-semibold text-fg">
+                <p className="text-xs font-semibold text-fg">
                   Falso Positivo (FP) — llamada innecesaria
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-muted">
-                  El modelo predice "convierte" pero el cliente{" "}
-                  <span className="font-semibold text-fg">no lo hace</span>.
-                  Se realiza una llamada sin resultado → costo operativo del
-                  agente, más riesgo de cansar al cliente con contactos
-                  repetidos.
+                <p className="mt-0.5 text-[0.65rem] leading-relaxed text-muted">
+                  Modelo dice "convierte" pero{" "}
+                  <span className="font-semibold text-fg">no lo hace</span>. Llamada sin resultado → costo operativo.
                 </p>
               </div>
             </Card>
           </Item>
 
           <Item>
-            <Card glow="cyan" className="flex items-start gap-3.5 p-5">
+            <Card glow="cyan" className="flex items-start gap-2.5 p-3">
               <IconBadge icon={AlertTriangle} accent="cyan" size="sm" />
               <div>
-                <p className="text-sm font-semibold text-fg">
+                <p className="text-xs font-semibold text-fg">
                   ¿Cuál pesa más?
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-muted">
-                  Depende del producto. En depósitos a plazo, un FN implica
-                  perder un ingreso de{" "}
-                  <span className="font-semibold text-fg">~$2.000</span>,
-                  mientras que un FP solo cuesta{" "}
-                  <span className="font-semibold text-fg">~$50</span> (una
-                  llamada). Por eso conviene{" "}
-                  <span className="font-semibold text-cyan">
-                    bajar el umbral a 0.3–0.4
-                  </span>{" "}
-                  para priorizar el Recall sobre la Precision.
+                <p className="mt-0.5 text-[0.65rem] leading-relaxed text-muted">
+                  FN = perder <span className="font-semibold text-fg">~$2.000</span>, FP = <span className="font-semibold text-fg">~$50</span>. Conviene{" "}
+                  <span className="font-semibold text-cyan">bajar umbral a 0.3–0.4</span> para priorizar Recall.
                 </p>
               </div>
             </Card>
@@ -120,17 +106,17 @@ export function SlideErrores() {
         </div>
 
         {/* Threshold table */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           <Item>
-            <Card className="p-5">
-              <div className="mb-3 flex items-center gap-2.5">
-                <SlidersHorizontal className="text-violet" size={18} />
-                <span className="text-sm font-semibold text-fg">
-                  Impacto del umbral de clasificación
+            <Card className="p-3">
+              <div className="mb-2 flex items-center gap-2">
+                <SlidersHorizontal className="text-violet" size={14} />
+                <span className="text-xs font-semibold text-fg">
+                  Impacto del umbral
                 </span>
               </div>
-              <div className="overflow-hidden rounded-xl border border-line">
-                <div className="grid grid-cols-[52px_1fr_1fr_1fr] bg-white/[0.03] px-3.5 py-1.5 text-[0.62rem] font-semibold uppercase tracking-wide text-faint">
+              <div className="overflow-hidden rounded-lg border border-line">
+                <div className="grid grid-cols-[44px_1fr_1fr_1fr] bg-white/[0.03] px-2.5 py-1 text-[0.55rem] font-semibold uppercase tracking-wide text-faint">
                   <span>Umbral</span>
                   <span className="text-center">Recall</span>
                   <span className="text-center">Precision</span>
@@ -139,59 +125,54 @@ export function SlideErrores() {
                 {thresholds.map((r) => (
                   <div
                     key={r.t}
-                    className={`grid grid-cols-[52px_1fr_1fr_1fr] items-start border-t border-line px-3.5 py-3 ${
+                    className={`grid grid-cols-[44px_1fr_1fr_1fr] items-start border-t border-line px-2.5 py-2 ${
                       r.highlight ? "bg-cyan/[0.06]" : ""
                     }`}
                   >
                     <span
-                      className={`font-mono text-sm font-bold ${
+                      className={`font-mono text-xs font-bold ${
                         r.highlight ? "text-cyan" : "text-fg"
                       }`}
                     >
                       {r.t}
                     </span>
-                    <span className="text-center font-mono text-xs text-emerald-400">
+                    <span className="text-center font-mono text-[0.65rem] text-emerald-400">
                       {r.recall}
                     </span>
-                    <span className="text-center font-mono text-xs text-violet-400">
+                    <span className="text-center font-mono text-[0.65rem] text-violet-400">
                       {r.precision}
                     </span>
                     <div>
-                      <p className="text-[0.68rem] font-semibold text-fg">
+                      <p className="text-[0.6rem] font-semibold text-fg">
                         FN {r.fn} · FP {r.fp}
                       </p>
-                      <p className="mt-0.5 text-[0.68rem] leading-snug text-faint">
+                      <p className="mt-0.5 text-[0.55rem] leading-snug text-faint">
                         {r.profile}
                       </p>
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="mt-2.5 text-[0.7rem] text-faint">
-                Valores aproximados sobre el conjunto de test de RF.
-                El umbral óptimo se calibra con la curva Precision-Recall
-                según el costo real de cada tipo de error en la campaña.
-              </p>
             </Card>
           </Item>
 
           <Item>
-            <Card className="p-5">
-              <p className="text-sm font-semibold text-fg">
+            <Card className="p-3">
+              <p className="text-xs font-semibold text-fg">
                 Cómo ajustar el umbral en producción
               </p>
-              <ul className="mt-2 flex flex-col gap-1.5">
+              <ul className="mt-1.5 flex flex-col gap-1">
                 {[
-                  "Calcular el costo promedio de FN y FP en la campaña anterior",
-                  "Graficar la curva Precision-Recall y localizar el punto que minimiza la pérdida esperada",
-                  "Implementar el umbral elegido en predict_proba() y monitorear con cada campaña",
-                  "Reentrenar el modelo cada 6 meses para capturar cambios en el comportamiento del cliente",
+                  "Calcular el costo promedio de FN y FP",
+                  "Graficar curva Precision-Recall",
+                  "Implementar umbral en predict_proba()",
+                  "Reentrenar cada 6 meses",
                 ].map((pt) => (
                   <li
                     key={pt}
-                    className="flex items-start gap-2 text-xs leading-relaxed text-muted"
+                    className="flex items-start gap-1.5 text-[0.65rem] leading-relaxed text-muted"
                   >
-                    <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-violet-400" />
+                    <span className="mt-1 h-0.5 w-0.5 shrink-0 rounded-full bg-violet-400" />
                     {pt}
                   </li>
                 ))}
