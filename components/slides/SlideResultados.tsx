@@ -1,16 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import {
   ClipboardList,
   BookOpen,
   AlertTriangle,
-  BarChart3,
+  TrendingUp,
   ShieldCheck,
   Star,
 } from "lucide-react";
 import { SlideShell, Item } from "../slide-shell";
 import { SectionTag, Heading, Card } from "../ui";
-import { MetricsBarChart } from "../charts";
 
 type Win = "empate" | "rf" | "rfpp" | "cart";
 
@@ -166,16 +166,24 @@ export function SlideResultados() {
 
         {/* Right column */}
         <div className="flex flex-col gap-3">
-          {/* Visual comparison */}
+          {/* ROC Curve image */}
           <Item>
             <Card className="p-5">
               <div className="mb-2 flex items-center gap-2.5">
-                <BarChart3 className="text-cyan" size={18} />
+                <TrendingUp className="text-cyan" size={18} />
                 <span className="text-sm font-semibold text-fg">
-                  Comparación visual de métricas
+                  Curva ROC — CART vs Random Forest
                 </span>
               </div>
-              <MetricsBarChart />
+              <div className="overflow-hidden rounded-xl">
+                <Image
+                  src="/curva_roc_comparada.png"
+                  alt="Curva ROC CART vs Random Forest"
+                  width={900}
+                  height={700}
+                  className="w-full h-auto"
+                />
+              </div>
             </Card>
           </Item>
 

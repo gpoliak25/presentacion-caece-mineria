@@ -115,18 +115,28 @@ export function SlideBibliografia() {
           </Item>
 
           <Item>
-            <Card className="flex items-start gap-3 p-4">
-              <ExternalLink className="mt-0.5 shrink-0 text-cyan" size={18} />
-              <div>
-                <p className="text-sm font-semibold text-fg">Dataset</p>
-                <p className="mt-1 text-xs text-muted">
-                  Bank Marketing · UCI Machine Learning Repository
-                </p>
-                <p className="mt-0.5 font-mono text-[0.68rem] text-faint">
-                  Moro et al. (2014) · 49.732 registros · 17 variables originales
-                </p>
-              </div>
-            </Card>
+            <a
+              href="https://archive.ics.uci.edu/dataset/222/bank+marketing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <Card className="flex items-start gap-3 p-4 transition-colors hover:border-cyan/40 hover:bg-cyan/[0.04]">
+                <ExternalLink className="mt-0.5 shrink-0 text-cyan" size={18} />
+                <div>
+                  <p className="text-sm font-semibold text-fg">Dataset</p>
+                  <p className="mt-1 text-xs text-muted">
+                    Bank Marketing · UCI Machine Learning Repository
+                  </p>
+                  <p className="mt-0.5 font-mono text-[0.68rem] text-faint">
+                    Moro et al. (2014) · 49.732 registros · 17 variables originales
+                  </p>
+                  <p className="mt-1.5 font-mono text-[0.65rem] text-cyan/70 underline underline-offset-2">
+                    archive.ics.uci.edu/dataset/222/bank+marketing
+                  </p>
+                </div>
+              </Card>
+            </a>
           </Item>
         </div>
       </div>

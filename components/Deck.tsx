@@ -10,6 +10,7 @@ import { SlideTrampa } from "./slides/SlideTrampa";
 import { SlidePipeline } from "./slides/SlidePipeline";
 import { SlideModelos } from "./slides/SlideModelos";
 import { SlideResultados } from "./slides/SlideResultados";
+import { SlideValidacion } from "./slides/SlideValidacion";
 import { SlideAplicacion } from "./slides/SlideAplicacion";
 import { SlideErrores } from "./slides/SlideErrores";
 import { SlideConclusiones } from "./slides/SlideConclusiones";
@@ -22,11 +23,12 @@ const slides = [
   { id: "trampa",     node: <SlideTrampa />,        presenter: "LORENA LÓPEZ" },
   { id: "pipeline",   node: <SlidePipeline />,      presenter: "LORENA LÓPEZ" },
   { id: "modelos",    node: <SlideModelos />,       presenter: "LORENA LÓPEZ" },
-  { id: "resultados", node: <SlideResultados />,    presenter: "GISELA POLIAK" },
+  { id: "resultados",  node: <SlideResultados />,   presenter: "GISELA POLIAK" },
+  { id: "validacion", node: <SlideValidacion />,    presenter: "GISELA POLIAK" },
   { id: "aplicacion", node: <SlideAplicacion />,    presenter: "GISELA POLIAK" },
   { id: "errores",    node: <SlideErrores />,       presenter: "GISELA POLIAK" },
   { id: "conclusiones", node: <SlideConclusiones />, presenter: "GISELA POLIAK" },
-  { id: "bibliografia", node: <SlideBibliografia />, presenter: "GISELA POLIAK" },
+  { id: "bibliografia", node: <SlideBibliografia />, presenter: null },
 ];
 
 const LAST = slides.length - 1;

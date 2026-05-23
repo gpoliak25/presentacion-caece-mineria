@@ -1,21 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { TrendingDown, Users, PhoneOff, FolderOpen, Target } from "lucide-react";
 import { SlideShell, Item } from "../slide-shell";
 import { SectionTag, Heading, StatCard, Card } from "../ui";
 import { ConversionDonut } from "../charts";
+import { CsvPreviewModal } from "../CsvPreviewModal";
 
 const dataset = [
-  { file: "banca_train.csv", desc: "Conjunto de entrenamiento original", used: false },
-  { file: "banca_test.csv", desc: "Conjunto de prueba original", used: false },
-  {
-    file: "bancaV1_actualizado.csv",
-    desc: "Dataset unificado y limpio",
-    used: true,
-  },
+  { file: "banca_train.csv",       desc: "Conjunto de entrenamiento original", used: false },
+  { file: "banca_test.csv",         desc: "Conjunto de prueba original",         used: false },
+  { file: "bancaV1_actualizado.csv", desc: "Dataset unificado y limpio",        used: true  },
 ];
 
 export function SlideProblema() {
+  const [openFile, setOpenFile] = useState<string | null>(null);
+
   return (
     <SlideShell>
       <Item>
@@ -93,7 +93,12 @@ export function SlideProblema() {
                     key={row.file}
                     className="grid grid-cols-[1.1fr_1.5fr] items-center border-t border-line px-4 py-2.5"
                   >
-                    <span className="font-mono text-xs text-fg">{row.file}</span>
+                    <button
+                      onClick={() => setOpenFile(row.file)}
+                      className="text-left font-mono text-xs text-cyan underline underline-offset-2 transition-opacity hover:opacity-70"
+                    >
+                      {row.file}
+                    </button>
                     <span className="flex items-center gap-2 text-sm text-muted">
                       {row.used && (
                         <span className="rounded-md border border-emerald/30 bg-emerald/10 px-1.5 py-0.5 text-[0.65rem] font-bold uppercase text-emerald">
@@ -129,6 +134,8 @@ export function SlideProblema() {
           </Item>
         </div>
       </div>
+
+      <CsvPreviewModal filename={openFile} onClose={() => setOpenFile(null)} />
     </SlideShell>
   );
 }
