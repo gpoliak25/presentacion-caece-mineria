@@ -22,18 +22,21 @@ const columns = [
 export function SlideCover() {
   return (
     <SlideShell>
-      {/* Random Forest background image - positioned at bottom right, cropped to show only trees */}
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[35%] w-[45%] overflow-hidden opacity-30">
+      {/* Random Forest background image - cropped to show only the tree shapes, blended into background */}
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[40%] w-[50%] overflow-hidden opacity-25">
         <Image
           src="/images/random-forest.png"
           alt=""
           fill
-          className="object-cover object-bottom"
-          style={{ objectPosition: "center 85%" }}
+          className="object-cover"
+          style={{ objectPosition: "center 100%" }}
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-bg via-transparent to-transparent" />
+        {/* Gradients to blend edges naturally into the background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/70 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-bg" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg/50" />
+        <div className="absolute inset-0 bg-gradient-to-l from-bg/30 to-transparent" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center text-center">
@@ -76,7 +79,7 @@ export function SlideCover() {
         </Item>
 
         <Item>
-          <div className="mt-4 grid w-full max-w-3xl grid-cols-1 divide-y divide-line overflow-hidden rounded-xl border border-line bg-white/[0.025] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <div className="mt-4 grid w-full max-w-3xl grid-cols-1 divide-y divide-line overflow-hidden rounded-xl border border-line bg-bg/80 backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {columns.map((c) => (
               <div key={c.label} className="px-4 py-3 sm:px-5 sm:py-4">
                 <p className="section-label mb-1.5 text-faint">{c.label}</p>
