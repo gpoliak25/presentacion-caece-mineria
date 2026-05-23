@@ -37,7 +37,7 @@ export function SlideCover() {
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-bg" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-start text-left">
+      <div className="relative z-10 flex flex-col items-center text-center">
         <Item>
           <div className="mb-4 overflow-hidden rounded-xl border border-line-strong shadow-lg shadow-black/40">
             <Image
@@ -73,7 +73,7 @@ export function SlideCover() {
         </Item>
 
         <Item>
-          <div className="mt-4 h-0.5 w-12 rounded-full bg-gradient-to-r from-violet to-cyan" />
+          <div className="mx-auto mt-4 h-0.5 w-12 rounded-full bg-gradient-to-r from-violet to-cyan" />
         </Item>
 
         <Item>
