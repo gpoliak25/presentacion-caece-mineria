@@ -22,19 +22,24 @@ const columns = [
 export function SlideCover() {
   return (
     <SlideShell>
-      {/* Random Forest background image - clip-path removes the decorative border lines */}
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[45%] w-[50%] overflow-hidden opacity-25">
+      {/* Random Forest background image - tinted to match the violet/blue theme */}
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[45%] w-[50%] overflow-hidden opacity-30">
         <Image
           src="/images/random-forest.png"
           alt=""
           fill
           className="object-cover object-bottom"
-          style={{ clipPath: "inset(12% 8% 5% 8%)" }}
+          style={{ 
+            clipPath: "inset(12% 8% 5% 8%)",
+            filter: "hue-rotate(-40deg) saturate(0.7)"
+          }}
           priority
         />
+        {/* Color overlay to match theme */}
+        <div className="absolute inset-0 bg-violet-deep/20 mix-blend-overlay" />
         {/* Gradients to blend into background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-bg" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-ink" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center text-center">
