@@ -22,22 +22,22 @@ const columns = [
 export function SlideCover() {
   return (
     <SlideShell>
-      {/* Random Forest background image - zoomed in to show only trees without border lines */}
-      <div className="pointer-events-none absolute -bottom-16 -right-16 h-[50%] w-[60%] overflow-hidden opacity-20">
+      {/* Random Forest background image - clip-path removes the decorative border lines */}
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[45%] w-[50%] overflow-hidden opacity-25">
         <Image
           src="/images/random-forest.png"
           alt=""
           fill
-          className="scale-[2] object-cover"
-          style={{ objectPosition: "50% 80%" }}
+          className="object-cover object-bottom"
+          style={{ clipPath: "inset(12% 8% 5% 8%)" }}
           priority
         />
         {/* Gradients to blend into background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-bg" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center text-center">
+      <div className="relative z-10 flex flex-col items-start text-left">
         <Item>
           <div className="mb-4 overflow-hidden rounded-xl border border-line-strong shadow-lg shadow-black/40">
             <Image
@@ -73,11 +73,11 @@ export function SlideCover() {
         </Item>
 
         <Item>
-          <div className="mx-auto mt-4 h-0.5 w-12 rounded-full bg-gradient-to-r from-violet to-cyan" />
+          <div className="mt-4 h-0.5 w-12 rounded-full bg-gradient-to-r from-violet to-cyan" />
         </Item>
 
         <Item>
-          <div className="mt-4 grid w-full max-w-3xl grid-cols-1 divide-y divide-line overflow-hidden rounded-xl border border-line bg-bg/80 backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          <div className="mr-auto mt-4 grid w-full max-w-2xl grid-cols-1 divide-y divide-line overflow-hidden rounded-xl border border-line bg-bg/90 backdrop-blur-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {columns.map((c) => (
               <div key={c.label} className="px-4 py-3 sm:px-5 sm:py-4">
                 <p className="section-label mb-1.5 text-faint">{c.label}</p>
