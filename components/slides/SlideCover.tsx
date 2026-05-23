@@ -82,13 +82,14 @@ export function SlideCover() {
 
         {/* ── RIGHT: Random Forest illustration ── */}
         <Item className="hidden lg:flex w-[440px] shrink-0 items-center justify-center">
-          <div className="relative overflow-hidden rounded-2xl" style={{height:"420px", width:"100%"}}>
+          <div className="relative overflow-hidden rounded-2xl" style={{width:"100%"}}>
             <Image
               src="/forest.jpg"
               alt="Random Forest"
-              fill
-              className="object-cover object-bottom"
-              style={{filter:"drop-shadow(0 0 30px rgba(45,212,191,0.2))"}}
+              width={550}
+              height={370}
+              className="w-full h-auto object-cover"
+              style={{filter:"drop-shadow(0 0 30px rgba(45,212,191,0.25))"}}
             />
           </div>
         </Item>
