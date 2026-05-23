@@ -22,7 +22,7 @@ const slides = [
   { id: "datos",      node: <SlideDatos />,         presenter: "LORENA LÓPEZ" },
   { id: "trampa",     node: <SlideTrampa />,        presenter: "LORENA LÓPEZ" },
   { id: "pipeline",   node: <SlidePipeline />,      presenter: "LORENA LÓPEZ" },
-  { id: "modelos",    node: <SlideModelos />,       presenter: "LORENA LÓPEZ" },
+  { id: "modelos",    node: <SlideModelos />,       presenter: "GISELA POLIAK" },
   { id: "resultados",  node: <SlideResultados />,   presenter: "GISELA POLIAK" },
   { id: "validacion", node: <SlideValidacion />,    presenter: "GISELA POLIAK" },
   { id: "aplicacion", node: <SlideAplicacion />,    presenter: "GISELA POLIAK" },
