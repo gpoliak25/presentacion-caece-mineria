@@ -10,7 +10,7 @@ const columns = [
   },
   {
     label: "Técnicas",
-    lines: ["CART · Random Forest", "AUC · Curva de Ganancia"],
+    lines: ["CART · Random Forest", "AUC · Curva ROC"],
   },
   {
     label: "Dataset",
